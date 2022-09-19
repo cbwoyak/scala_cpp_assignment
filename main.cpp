@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
   // Make sure the input file is specified
   if (argc != 2) {
     cerr << "No input file specified." << endl;
-    cerr << " Usage: ScalaCppAssignment <filename>" << endl;
+    cerr << " Usage: ScalaExercise <filename>" << endl;
     return -1;
   }
 
