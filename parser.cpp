@@ -13,7 +13,7 @@ class YamlParser : public Parser {
     virtual ~YamlParser() {}
 
     [[deprecated("YamlParser::parse not yet implemented")]]
-    virtual std::tuple<HikerList, BridgeList> parse(const std::string &path) {
+    virtual std::tuple<HikerList, BridgeList> parse(const std::string &path) override {
       return { {}, {} };
     }
 
@@ -26,7 +26,7 @@ class TestParser : public Parser {
 
     virtual ~TestParser() {}
 
-    virtual std::tuple<HikerList, BridgeList> parse(const std::string &path) {
+    virtual std::tuple<HikerList, BridgeList> parse(const std::string &path) override {
       return { {100, 50, 20, 10 },
         //{ { 100.0f, {} } } };
         { { 100.0f, {} }, {250, {2.5} }, {150, {25, 15}}}};
@@ -56,7 +56,7 @@ class TextParser : public Parser {
 
     virtual ~TextParser() {}
 
-    virtual std::tuple<HikerList, BridgeList> parse(const std::string &path) {
+    virtual std::tuple<HikerList, BridgeList> parse(const std::string &path) override {
       HikerList hikers;
       BridgeList bridges;
 
@@ -141,13 +141,13 @@ class TextParser : public Parser {
     }
 };
 
-std::unique_ptr<Parser> Parser::create(Type t) {
+std::unique_ptr<Parser> Parser::create(Parser::Type t) {
   switch (t) {
-    case Type::TEST:
+    case Parser::Type::TEST:
       return std::make_unique<TestParser>();
-    case Type::TEXT:
+    case Parser::Type::TEXT:
       return std::make_unique<TextParser>();
-    case Type::YAML:
+    case Parser::Type::YAML:
       return std::make_unique<YamlParser>();
   }
 }
