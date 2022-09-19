@@ -49,12 +49,9 @@ hiker must double-back at least once to fetch the remaining hikers.
 
 ## Architecture
 Our solution is split into two main components: Parser and Solver. Both of these
-are abstractions of an input file parser, 
-The solution that we implemented is relatively simple, and did not require any
-excessive architecting([See Potential Improvements](#potential-improvements)).
-However, because we were not given details about the expected input file format,
-we decided to abstract the parser interface to support multiple file formats and
-data sources.
+are abstractions of an input file parser, respectively. This allows developers
+to easily add support for other input file types and algorithms while
+maintaining a cohesive interface.
 
 The Parser class provides a very simple interface for specifying a file and
 returning the parsed data requried to solve the problem given our algorithm.
